@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+
+    <h2>Restaurant</h2>
+    <div class="addrestaurant"><a class="nav-link" href="/add">Add Restaurant</a></div>
+    <input type="text" id="myInput" onkeyup="searchTable()" placeholder="Search for restaurant..">
+    <table class="table table-bordered table-striped " id="table">
+        <thead class="thead-light">
+            <tr>
+                <th onclick="sortTable(0)" style="width:107px;">Date</th>
+                <th onclick="sortTable(1)">Name</th>
+                <th onclick="sortTable(2)" style="width:108px;">Favourite</th>
+                <th onclick="sortTable(3)" style="width:87px;">Rating</th>
+                <th onclick="sortTable(4)">Critics</th>
+                <th onclick="sortTable(5)">Location</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for restaurant in restaurants %}
+                <tr>
+                    <td>{{ restaurant.timestamp }}</td>
+                    <td>{{ restaurant.name }}</td>
+                    <td>{{ restaurant.favourite }}</td>
+                    <td>{{ restaurant.rating }}</td>
+                    <td>{{ restaurant.critics }}</td>
+                    <td>{{ restaurant.location }}</td>
+                    <td>
+                        <form action="/delete", method="POST">
+                        <button type="submit">DELETE</button>
+                        <input type="text" name='restaurant_name' value='{{ restaurant["name"] }}' hidden>
+                        </form>
+                    </td>
+
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    <script src="/static/sortsearch.js"></script>
+{% endblock %}

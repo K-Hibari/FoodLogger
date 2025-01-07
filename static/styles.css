@@ -1,0 +1,163 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+/* Logo */
+.logo
+{
+    font-style: italic;
+    text-decoration: none;
+    font-size: xx-large;
+    color: #000000
+}
+
+.bg {
+    /* The image used */
+    background-image: url("/static/bg.jpeg");
+
+    /* Center and scale the image nicely */
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode:overlay;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: auto;
+    height: auto;
+}
+
+.back {
+    /* The image used */
+    background-image: url("/static/bg.jpeg");
+
+    /* Center and scale the image nicely */
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navbar {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.center {
+    position: fixed;
+    inset: 0;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.addrestaurant {
+    text-align:left;
+    width: fit-content;
+    height: fit-content;
+    background-color: rgba(255,0,0,0.7);
+    color: black;
+    border-radius: 15px;
+    margin: 10px 10px;
+    padding: 5px 15px;
+}
+
+
+
+.nav-item:hover {
+    background-color: coral;
+}
+
+.addrestaurant:hover {
+    background-color: coral;
+}
+
+.reg:hover {
+    color: blue;
+}
+
+#myInput {
+  background-image: url('/static/search.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+.tt
+{
+    font-style: italic;
+    text-decoration: none;
+    font-size: xx-large;
+    color: #000000
+}
+
+.tt:hover {
+    text-decoration: underline;
+    color: black;
+  }
+
+
+#map {
+    height: 700px; /* The height is 400 pixels */
+    width: 80%; /* The width is the width of the web page */
+    margin: auto;
+}
+
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: auto;
+}
+
+label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+input[type="text"], textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+

@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Map
+{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block main %}
+    <h3 style="margin:auto;">Restaurant Map</h3>
+{% endblock %}
+
+{% block body %}
+    <!--The div element for the map -->
+    <div id="map" style="height: 700px;"></div>
+
+    <script>
+        // Initialize eatery with a default location
+        let eatery = [
+            {
+                position: { lat: 1.3521, lng: 103.8198 },
+                title: "Singapore",
+            },
+        ];
+
+        // Function to add a restaurant to eatery
+        function add(name, lat, lng) {
+            eatery.push({
+                position: { lat: parseFloat(lat), lng: parseFloat(lng) },
+                title: name,
+            });
+        }
+
+        // Function to fetch lat/lng from an address using Geocoding API
+        async function geocodeAddress(address) {
+            const response = await fetch(
+                `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+                    address
+                )}&key=AIzaSyBSThyA8mYPjJTd8m-reylcj-34xpYa8Js`
+            );
+            const data = await response.json();
+
+            if (data.status === "OK") {
+                const location = data.results[0].geometry.location;
+                return { lat: location.lat, lng: location.lng };
+            } else {
+                console.error("Geocoding failed:", data.status, data.error_message);
+                return null;
+            }
+        }
+
+        // Process restaurants and fetch coordinates
+        async function processRestaurants() {
+            const restaurantData = [
+                {% for restaurant in restaurants %}
+                    { name: "{{ restaurant.name }}", address: "{{ restaurant.location }}" },
+                {% endfor %}
+            ];
+
+            for (const restaurant of restaurantData) {
+                const location = await geocodeAddress(restaurant.address);
+                if (location) {
+                    add(restaurant.name, location.lat, location.lng);
+                } else {
+                    console.error(`Failed to fetch coordinates for ${restaurant.name}`);
+                }
+            }
+        }
+
+        // Initialize and display the map
+        async function initMap() {
+            const { Map, InfoWindow } = await google.maps.importLibrary("maps");
+            const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
+
+            const map = new Map(document.getElementById("map"), {
+                zoom: 12,
+                center: { lat: 1.3521, lng: 103.8198 },
+                mapId: "sg",
+            });
+
+            const infoWindow = new InfoWindow();
+
+            // Add markers for each eatery
+            eatery.forEach(({ position, title }, i) => {
+                const pin = new PinElement({
+                    glyph: `${i + 1}`,
+                    scale: 1,
+                });
+
+                const marker = new AdvancedMarkerElement({
+                    position,
+                    map,
+                    title: `${i + 1}. ${title}`,
+                    content: pin.element,
+                    gmpClickable: true,
+                });
+
+                // Add a click listener for the marker
+                marker.addListener("click", () => {
+                    infoWindow.close();
+                    infoWindow.setContent(marker.title);
+                    infoWindow.open(marker.map, marker);
+                });
+            });
+        }
+
+        // Main function to process restaurants and initialize the map
+        async function main() {
+            await processRestaurants(); // Ensure all geocoding is done
+            initMap(); // Initialize map only after processing
+        }
+
+        // Start the main function
+        main();
+    </script>
+
+    <!-- Include the Google Maps API script -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSThyA8mYPjJTd8m-reylcj-34xpYa8Js" async defer></script>
+{% endblock %}
