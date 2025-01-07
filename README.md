@@ -36,10 +36,10 @@
 >- All these information are then displayed in the <span style="color:red">_map.html_</span>
 
 ## **Technical Specifications:**
-- ### **Framework**: Flask
-- ### **Database**: Sqlite(finalproject.db)
-- ### **Template Files**: <span style="color:red">_add.html_  _apology.html_  _index.html_  _layout.html_  _login.html_  _map.html_  _register.html_</span>, 
-- ### **Framework**: Geocoding and Google Map API
+- #### **Framework**: Flask
+- #### **Database**: Sqlite(finalproject.db)
+- #### **Template Files**: <span style="color:red">_add.html_  _apology.html_  _index.html_  _layout.html_  _login.html_  _map.html_  _register.html_</span>, 
+- #### **Framework**: Geocoding and Google Map API
 
 ## How to install and run FoodLogger
 
