@@ -6,7 +6,7 @@
 
 ## **Navigation Flow:**
 ## 1. Login Page:![Login Page](static/login.png)
->- After starting the Flask application, users will be redirected to /login route which will show the login page as seen above which comes from '''diff - _login.html_ - '''.
+>- After starting the Flask application, users will be redirected to /login route which will show the login page as seen above which comes from '''diff @@ _login.html_ @@ '''.
 >- In order to log in, both username and password must be filled.
 >- After clicking the Log In button, a backend verification against the users table in <span style="color:red">_finalproject.db_</span> is performed to authenticate credentials.
 >- Once verification is successful, user will be redirected to the homepage.
