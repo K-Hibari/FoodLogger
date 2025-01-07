@@ -33,12 +33,12 @@
 >- Accessible via the "Map" button, this page routes to $${\color{red}/map}$$ via GET and display a map with markers obtained from $${\color{red}finalproject.db}$$.
 >- Through the usage of Geocoding API, I was able to loop through the restaurant table in $${\color{red}finalproject.db}$$ and obtain each location's latitude and longitude and pushed them into a $${\color{red}eatery}$$ array.
 >- Then through the usage of Google Map API, I was able to initialised a map and loop through the $${\color{red}eatery}$$ array to set up markers for map. 
->- All these information are then displayed in the $${\color{red}_map.html_}$$
+>- All these information are then displayed in the $${\color{red}map.html}$$
 
 ## **Technical Specifications:**
 - #### **Framework**: Flask
 - #### **Database**: Sqlite(finalproject.db)
-- #### **Template Files**: `_add.html_  _apology.html_  _index.html_  _layout.html_  _login.html_  _map.html_  _register.html_`, 
+- #### **Template Files**: `_add.html`  `apology.html`  `index.html`  `layout.html`  `login.html`  `map.html`  `register.html`, 
 - #### **Framework**: Geocoding and Google Map API
 
 ## How to install and run FoodLogger
